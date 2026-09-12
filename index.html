@@ -35,9 +35,9 @@ nav{height:78px;display:flex;align-items:center;justify-content:space-between;bo
 .dot{width:8px;height:8px;background:var(--accent);border-radius:50%}
 h1{font-size:clamp(48px,6.2vw,82px);line-height:.94;letter-spacing:-.065em;margin:0 0 28px;max-width:850px}
 h1 em{font-style:normal;color:var(--accent)}
-.hero-stat{font-size:19px;line-height:1.45;max-width:700px;margin:0 0 24px}
+.hero-stat{font-size:20px;line-height:1.45;max-width:700px;margin:0 0 24px}
 .hero-stat strong{font-weight:850}
-.hero-copy{color:var(--muted);font-size:17px;max-width:650px;margin-bottom:32px}
+.hero-copy{color:var(--muted);font-size:18px;max-width:650px;margin-bottom:32px}
 .buttons{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;border-radius:10px;font-weight:800;border:1px solid var(--ink);transition:.2s}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -139,6 +139,38 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:12px
   footer{gap:15px;flex-direction:column}
   .price-box{max-width:100%}
 }
+@media(max-width:480px){
+  nav{height:auto;min-height:64px;padding:12px 0;flex-wrap:nowrap}
+  .logo{font-size:14px;white-space:nowrap}
+  .navcta{font-size:12px;padding:9px 13px;white-space:nowrap;flex:none}
+  .hero{padding:40px 0 36px;gap:28px}
+  h1{font-size:clamp(34px,10vw,52px);letter-spacing:-.045em;margin:0 0 18px}
+  .hero-stat{margin:0 0 16px}
+  .hero-copy{margin-bottom:22px}
+  .hero-card{padding:24px}
+  .card-top{margin-bottom:30px}
+  h2{font-size:clamp(28px,8vw,40px)}
+  .section{padding:44px 0}
+  .section-head{margin-bottom:30px}
+  .curriculum-head{margin:36px 0 6px}
+  .bonus{padding:26px 20px;gap:24px;border-radius:20px}
+  .manifesto{padding:26px 20px;border-radius:20px}
+  .quote{padding:50px 0}
+  .quote blockquote{font-size:clamp(24px,7vw,32px)}
+  .price-box{padding:30px 22px}
+  .final{padding:60px 0 65px}
+  .lead{font-size:17px}
+  .final p{font-size:17px}
+  .module p{font-size:14px}
+  .curriculum-head p{font-size:14px}
+  .curriculum dd{font-size:14px}
+  .curriculum ul li{font-size:14px}
+  .note p{font-size:15px}
+  details p{font-size:15px}
+  summary{font-size:16px}
+  .bonus-item{font-size:13px}
+  .price-sub{font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -159,8 +191,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:12px
 <main>
 <section class="container hero">
   <div>
-    <div class="eyebrow"><span class="dot"></span> For AI-assisted software builders</div>
-    <h1>VIBE CODER, AI HELPED YOU BUILD YOUR APP.<br><em>WHO HELPED YOU SECURE IT?</em></h1>
+    <h1>AI HELPED YOU BUILD YOUR APP.<br><em>WHO HELPED YOU SECURE IT?</em></h1>
     <p class="hero-stat"><strong>In 2025, GitGuardian detected 28.65 million new hardcoded secrets in public GitHub commits — a 34% increase from the year before.</strong></p>
     <p class="hero-copy">And here's the uncomfortable part. AI has made it easier than ever to build software. You can describe an idea, and AI can write the code, build the interface, connect your database, set up authentication, integrate payments, and help you deploy the whole thing. But there's a difference between getting an application to work and understanding what you've actually built.</p>
     <p class="hero-copy">Because when AI is doing the building, you still need to know enough to guide it, know what questions to ask, understand the decisions it's making, and recognize when something doesn't look right — and know what should be checked before you put your application in front of real users. That's what The AI Software Builder Course is for.</p>
@@ -168,16 +199,15 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:12px
       <a class="btn primary" href="https://selar.com/8713g4z88e">Get the AI Software Builder Course →</a>
       <a class="btn secondary" href="#inside">See what's inside</a>
     </div>
-    <div class="proof">Build with AI. Understand what you build. Ship more responsibly.</div>
   </div>
   <div class="hero-card">
-    <div class="card-top"><span>Pre-launch review</span><span>V1.0</span></div>
+    <div class="card-top"><span>Pre-launch review</span></div>
     <div class="checklist">
-      <div class="check"><div class="tick">✓</div><div><b>Secrets protected</b><span>API keys aren't sitting where users can see them.</span></div></div>
-      <div class="check"><div class="tick">✓</div><div><b>User data isolated</b><span>Users can't access another user's information.</span></div></div>
-      <div class="check"><div class="tick">✓</div><div><b>Permissions enforced</b><span>Security isn't just hidden buttons.</span></div></div>
-      <div class="check"><div class="tick">✓</div><div><b>Production tested</b><span>The live application has actually been checked.</span></div></div>
-      <div class="check"><div class="tick">✓</div><div><b>Backups verified</b><span>Important data can actually be restored.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>Secrets protected</b><span>Someone can't open your site's code in their browser and steal your API keys.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>User data isolated</b><span>One user can't type in another user's ID and see their private information.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>Permissions enforced</b><span>Hiding a button isn't enough — someone can't bypass it and reach admin features directly.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>Production tested</b><span>Someone actually used the live app and it worked — not just on your own computer.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>Backups verified</b><span>If your database got wiped tomorrow, you could actually get the data back — not just hope the backup file works.</span></div></div>
     </div>
   </div>
 </section>
@@ -185,14 +215,55 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:12px
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <div class="kicker">Build with AI. Understand what you build.</div>
-      <h2>You can build faster than you can understand.</h2>
+      <h2>Your app looking fine doesn't make it secure.</h2>
       <p class="lead">AI has changed who can build software. You no longer have to spend years learning to write every line of code before turning an idea into something real. That's an incredible opportunity — but it also creates a new problem.</p>
       <p class="lead">Your application might look beautiful, work perfectly in testing, have a database, authentication and payments, and be live on the internet — and you might still have no idea whether you've made a serious mistake somewhere along the way. That's not because you're incapable. It's because AI can generate a lot of complexity very quickly. The answer isn't to stop using AI. The answer is to understand enough to use it properly.</p>
     </div>
     <div class="not-course">
       <div class="note"><h3>AI isn't a magic box.</h3><p>It doesn't automatically know your business, understand your users, know which features matter, or know which technology is appropriate for your project — and it doesn't automatically make every piece of generated code secure.</p></div>
       <div class="note"><h3>The numbers back this up.</h3><p>Veracode's research found that 45% of AI-generated coding tasks produced code with security vulnerabilities when tested against common security weaknesses. The question isn't "can AI build software?" — it's "do you understand enough to review what AI builds?"</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Is this you?</div>
+      <h2>Who this course is for.</h2>
+    </div>
+    <div class="personas">
+      <div class="note"><h3>The aspiring builder</h3><p>You have ideas for websites, applications or SaaS products. Traditional programming always felt like a massive barrier. AI changed that — now you want to understand how to actually use it.</p></div>
+      <div class="note"><h3>The vibe coder</h3><p>You're already using AI to build with tools like ChatGPT, Claude, Gemini, Cursor or coding agents. Things work, but sometimes you look at what AI produced and think: "I have no idea what any of this means." This course is for you.</p></div>
+      <div class="note"><h3>The designer</h3><p>You understand interfaces, users and experiences. Now you want to understand more of what happens behind the interface.</p></div>
+      <div class="note"><h3>The entrepreneur</h3><p>You have a business idea and want to understand what's actually involved in turning that idea into software.</p></div>
+      <div class="note"><h3>The freelancer</h3><p>You want to use AI to build more efficiently while still understanding enough to communicate with clients and manage projects responsibly.</p></div>
+      <div class="note"><h3>The curious builder</h3><p>You simply want to understand how modern software works and how AI is changing the way it's built. You don't need to become an engineer to do that.</p></div>
+    </div>
+
+<div class="curriculum-head">
+      <h3>Who this course is not for</h3>
+    </div>
+    <div class="not-for-list">
+      <div class="not-for-item"><div class="x">✕</div>This isn't designed to replace a computer science degree.</div>
+      <div class="not-for-item"><div class="x">✕</div>It isn't an advanced programming course.</div>
+      <div class="not-for-item"><div class="x">✕</div>It isn't a collection of hundreds of prompts promising that one magical prompt will build your entire business.</div>
+      <div class="not-for-item"><div class="x">✕</div>And it isn't a promise that AI will never make mistakes. Because it will. The point is to help you become better at working with those mistakes.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">What this is — and isn't</div>
+      <h2>Not another "learn to code" course.</h2>
+    </div>
+    <div class="not-course">
+      <div class="note"><h3>It isn't about memorising syntax.</h3><p>You don't need to become a software engineer to understand what your AI coding assistant is doing. The goal is practical understanding and better decisions.</p></div>
+      <div class="note"><h3>It isn't AI autopilot.</h3><p>AI can move incredibly fast. That makes your ability to plan, review, question and verify what it creates even more important.</p></div>
+      <div class="note"><h3>It isn't a giant prompt dump.</h3><p>The course gives you useful AI prompts where they matter, but the real value is knowing what to ask, why you're asking it and how to judge the answer.</p></div>
+      <div class="note"><h3>It teaches you your limits, too.</h3><p>Some projects need experienced developers. Knowing when a problem is beyond your current ability is part of becoming a responsible builder.</p></div>
     </div>
   </div>
 </section>
@@ -379,48 +450,6 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:12px
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <div class="kicker">What this is — and isn't</div>
-      <h2>Not another "learn to code" course.</h2>
-    </div>
-    <div class="not-course">
-      <div class="note"><h3>It isn't about memorising syntax.</h3><p>You don't need to become a software engineer to understand what your AI coding assistant is doing. The goal is practical understanding and better decisions.</p></div>
-      <div class="note"><h3>It isn't AI autopilot.</h3><p>AI can move incredibly fast. That makes your ability to plan, review, question and verify what it creates even more important.</p></div>
-      <div class="note"><h3>It isn't a giant prompt dump.</h3><p>The course gives you useful AI prompts where they matter, but the real value is knowing what to ask, why you're asking it and how to judge the answer.</p></div>
-      <div class="note"><h3>It teaches you your limits, too.</h3><p>Some projects need experienced developers. Knowing when a problem is beyond your current ability is part of becoming a responsible builder.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <div class="kicker">Is this you?</div>
-      <h2>Who this course is for.</h2>
-    </div>
-    <div class="personas">
-      <div class="note"><h3>The aspiring builder</h3><p>You have ideas for websites, applications or SaaS products. Traditional programming always felt like a massive barrier. AI changed that — now you want to understand how to actually use it.</p></div>
-      <div class="note"><h3>The vibe coder</h3><p>You're already using AI to build with tools like ChatGPT, Claude, Gemini, Cursor or coding agents. Things work, but sometimes you look at what AI produced and think: "I have no idea what any of this means." This course is for you.</p></div>
-      <div class="note"><h3>The designer</h3><p>You understand interfaces, users and experiences. Now you want to understand more of what happens behind the interface.</p></div>
-      <div class="note"><h3>The entrepreneur</h3><p>You have a business idea and want to understand what's actually involved in turning that idea into software.</p></div>
-      <div class="note"><h3>The freelancer</h3><p>You want to use AI to build more efficiently while still understanding enough to communicate with clients and manage projects responsibly.</p></div>
-      <div class="note"><h3>The curious builder</h3><p>You simply want to understand how modern software works and how AI is changing the way it's built. You don't need to become an engineer to do that.</p></div>
-    </div>
-
-    <div class="curriculum-head">
-      <h3>Who this course is not for</h3>
-    </div>
-    <div class="not-for-list">
-      <div class="not-for-item"><div class="x">✕</div>This isn't designed to replace a computer science degree.</div>
-      <div class="not-for-item"><div class="x">✕</div>It isn't an advanced programming course.</div>
-      <div class="not-for-item"><div class="x">✕</div>It isn't a collection of hundreds of prompts promising that one magical prompt will build your entire business.</div>
-      <div class="not-for-item"><div class="x">✕</div>And it isn't a promise that AI will never make mistakes. Because it will. The point is to help you become better at working with those mistakes.</div>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="bonus">
   <div class="container">
     <div class="bonus">
@@ -464,30 +493,6 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:12px
   <div class="container">
     <blockquote>"The goal isn't simply: AI says my app is ready."</blockquote>
     <p>The goal is: "I've checked the things that matter for my application, and I understand what I've verified." Think of the checklist as your pre-launch second pair of eyes.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="manifesto">
-      <div class="kicker">A few things worth remembering</div>
-      <h2>You can build with AI. Just don't build blindly.</h2>
-      <p>AI has given more people the ability to turn ideas into software. That's incredible. But the next skill isn't simply learning how to generate more code — it's learning how to understand what you're generating. Because your application isn't just code.</p>
-      <div class="stack">
-        <span>It's users.</span><span>It's data.</span><span>It's authentication.</span><span>It's payments.</span><span>It's business logic.</span><span>It's infrastructure.</span><span>It's security.</span><span><strong>It's responsibility.</strong></span>
-      </div>
-      <p>And when you put something on the internet, real people may depend on it. So don't just ask AI "Can you build this?" — learn to ask:</p>
-      <div class="asks">
-        <div>"Why are we building it this way?"</div>
-        <div>"What could go wrong?"</div>
-        <div>"How should this be secured?"</div>
-        <div>"Why are we choosing this technology?"</div>
-        <div>"What should I test?"</div>
-        <div>"What am I missing?"</div>
-        <div>"Is this something I should get an experienced developer to review?"</div>
-      </div>
-      <p class="emphasis">That's what makes you a better AI software builder. You don't need to know everything — a responsible AI software builder knows their limits, and knowing when you need help is part of building responsibly.</p>
-    </div>
   </div>
 </section>
 
@@ -547,9 +552,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:12px
 </main>
 
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;width:100%;gap:20px">
+  <div class="container" style="display:flex;justify-content:center;width:100%">
     <span>© 2026 Learn From Ola</span>
-    <span>Build it. Check it. Then ship it.</span>
   </div>
 </footer>
 
