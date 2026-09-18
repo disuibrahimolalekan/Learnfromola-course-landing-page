@@ -11,6 +11,30 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing firstName or email' });
   }
 
+  const SELAR_URL = 'https://selar.com/8713g4z88e';
+  const waMessage = `Hi Ola, I'm interested in your AI software developer course. My name is ${firstName}.\n\nI have few questions. `;
+  const WHATSAPP_URL = `https://wa.me/2349036374359?text=${encodeURIComponent(waMessage)}`;
+
+  const emailHtml = `
+    <div style="font-family:Arial,Helvetica,sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;color:#111">
+      <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Hi ${firstName},</p>
+      <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Thanks for your interest in the AI Software Developer course.</p>
+      <p style="font-size:16px;line-height:1.6;margin:0 0 16px">AI can write the code for you now. What most builders don't know is what to check before that code goes live — what to test, what to secure, what to ask. That's what this course teaches.</p>
+      <p style="font-size:16px;line-height:1.6;margin:0 0 24px">You can go ahead and get instant access below, or message us directly on WhatsApp if you have questions first.</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:12px">
+        <tr><td style="border-radius:999px;background:#111">
+          <a href="${SELAR_URL}" style="display:block;padding:14px 20px;color:#fff;text-decoration:none;font-weight:bold;font-size:15px;text-align:center;border-radius:999px">Get the course now →</a>
+        </td></tr>
+      </table>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:24px">
+        <tr><td style="border-radius:999px;background:#25D366">
+          <a href="${WHATSAPP_URL}" style="display:block;padding:14px 20px;color:#fff;text-decoration:none;font-weight:bold;font-size:15px;text-align:center;border-radius:999px">Message us on WhatsApp</a>
+        </td></tr>
+      </table>
+      <p style="font-size:15px;line-height:1.6;margin:0;color:#555">Talk soon,<br>Ola</p>
+    </div>
+  `;
+
   try {
     const emailRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -21,8 +45,8 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: 'noreply@learnfromola.online',
         to: email,
-        subject: `Thanks for your interest, ${firstName}!`,
-        html: `<p>Hi ${firstName},</p><p>Thanks for checking out the AI Software Developer course. We'll be in touch shortly.</p>`
+        subject: `Welcome, ${firstName} — here's how to get started`,
+        html: emailHtml
       })
     });
 
