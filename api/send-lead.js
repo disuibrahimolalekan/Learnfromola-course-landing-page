@@ -12,13 +12,13 @@ export default async function handler(req, res) {
   }
 
   const SELAR_URL = 'https://selar.com/8713g4z88e';
-  const waMessage = `Hi Ola, I'm interested in your AI software developer course. My name is ${firstName}.\n\nI have few questions. `;
+  const waMessage = `Hi Ola, I'm interested in your AI software Builder course. My name is ${firstName}.\n\nI have few questions. `;
   const WHATSAPP_URL = `https://wa.me/2349036374359?text=${encodeURIComponent(waMessage)}`;
 
   const emailHtml = `
     <div style="font-family:Arial,Helvetica,sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;color:#111">
       <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Hi ${firstName},</p>
-      <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Thanks for your interest in the AI Software Developer course.</p>
+      <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Thanks for your interest in the AI Software Builder course.</p>
       <p style="font-size:16px;line-height:1.6;margin:0 0 16px">AI can write the code for you now. What most builders don't know is what to check before that code goes live — what to test, what to secure, what to ask. That's what this course teaches.</p>
       <p style="font-size:16px;line-height:1.6;margin:0 0 24px">You can get the course below, or message us directly on WhatsApp if you have questions first.</p>
       <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:12px">
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
   const emailText = `Hi ${firstName},
 
-Thanks for your interest in the AI Software Developer course.
+Thanks for your interest in the AI Software Builder course.
 
 AI can write the code for you now. What most builders don't know is what to check before that code goes live — what to test, what to secure, what to ask. That's what this course teaches.
 
