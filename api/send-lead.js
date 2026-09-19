@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Hi ${firstName},</p>
       <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Thanks for your interest in the AI Software Developer course.</p>
       <p style="font-size:16px;line-height:1.6;margin:0 0 16px">AI can write the code for you now. What most builders don't know is what to check before that code goes live — what to test, what to secure, what to ask. That's what this course teaches.</p>
-      <p style="font-size:16px;line-height:1.6;margin:0 0 24px">You can go ahead and get instant access below, or message us directly on WhatsApp if you have questions first.</p>
+      <p style="font-size:16px;line-height:1.6;margin:0 0 24px">You can get the course below, or message us directly on WhatsApp if you have questions first.</p>
       <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:12px">
         <tr><td style="border-radius:999px;background:#111">
           <a href="${SELAR_URL}" style="display:block;padding:14px 20px;color:#fff;text-decoration:none;font-weight:bold;font-size:15px;text-align:center;border-radius:999px">Get the course now →</a>
@@ -31,9 +31,26 @@ export default async function handler(req, res) {
           <a href="${WHATSAPP_URL}" style="display:block;padding:14px 20px;color:#fff;text-decoration:none;font-weight:bold;font-size:15px;text-align:center;border-radius:999px">Message us on WhatsApp</a>
         </td></tr>
       </table>
-      <p style="font-size:15px;line-height:1.6;margin:0;color:#555">Talk soon,<br>Ola</p>
+      <p style="font-size:15px;line-height:1.6;margin:0 0 20px;color:#555">Talk soon,<br>Ola</p>
+      <p style="font-size:12px;line-height:1.5;margin:0;color:#999;border-top:1px solid #eee;padding-top:16px">Learn From Ola — AI Software Developer Course<br>You're receiving this because you requested details on learnfromola.online.</p>
     </div>
   `;
+
+  const emailText = `Hi ${firstName},
+
+Thanks for your interest in the AI Software Developer course.
+
+AI can write the code for you now. What most builders don't know is what to check before that code goes live — what to test, what to secure, what to ask. That's what this course teaches.
+
+You can get the course here: ${SELAR_URL}
+Or message us on WhatsApp: ${WHATSAPP_URL}
+
+Talk soon,
+Ola
+
+--
+Learn From Ola — AI Software Developer Course
+You're receiving this because you requested details on learnfromola.online.`;
 
   const result = { emailSent: false, sheetSaved: false, emailError: null, sheetError: null };
 
@@ -49,7 +66,8 @@ export default async function handler(req, res) {
         from: 'Ola <updates@learnfromola.online>',
         to: email,
         subject: `AI Software Developer Course`,
-        html: emailHtml
+        html: emailHtml,
+        text: emailText
       })
     });
 
