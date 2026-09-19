@@ -46,9 +46,9 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'noreply@learnfromola.online',
+        from: 'Ola <updates@learnfromola.online>',
         to: email,
-        subject: `Welcome, ${firstName} — here's how to get started`,
+        subject: `AI Software Developer Course`,
         html: emailHtml
       })
     });
