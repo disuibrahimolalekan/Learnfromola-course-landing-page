@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Software Builder Course</title>
+<meta name="description" content="Build with AI. Understand what you build. Ship more responsibly. The practical course for AI-assisted software builders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f4;
+  --ink:#101010;
+  --muted:#656565;
+  --line:#d9d9d2;
+  --card:#fff;
+  --accent:#ff5a36;
+  --accent-dark:#e94827;
+  --soft:#ecece5;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.logo{font-weight:900;letter-spacing:-.04em;font-size:18px}
+.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:28px;font-size:14px;color:#444}
+.navcta{background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:700;font-size:14px}
+.hero{padding:90px 0 70px;display:grid;grid-template-columns:1.12fr .88fr;gap:65px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+.dot{width:8px;height:8px;background:var(--accent);border-radius:50%}
+h1{font-size:clamp(48px,6.2vw,82px);line-height:.94;letter-spacing:-.065em;margin:0 0 28px;max-width:850px}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-stat{font-size:20px;line-height:1.45;max-width:700px;margin:0 0 24px}
+.hero-stat strong{font-weight:850}
+.hero-copy{color:var(--muted);font-size:18px;max-width:650px;margin-bottom:32px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;border-radius:10px;font-weight:800;border:1px solid var(--ink);transition:.2s}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-dark)}
+.btn.secondary{background:transparent}
+.proof{margin-top:28px;font-size:12px;color:#777}
+.hero-card{background:var(--ink);color:#fff;border-radius:24px;padding:34px;box-shadow:0 24px 70px #00000018;transform:rotate(1.2deg)}
+.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:50px;color:#aaa;font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.checklist{display:grid;gap:16px}
+.check{display:flex;gap:13px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid #333}
+.check:last-child{border:0}
+.tick{width:23px;height:23px;display:grid;place-items:center;background:var(--accent);border-radius:50%;font-size:13px;font-weight:900;flex:none}
+.check b{display:block;font-size:15px;margin-bottom:2px}
+.check span{color:#9d9d9d;font-size:12px}
+.section{padding:95px 0;border-top:1px solid var(--line)}
+.section-head{max-width:760px;margin-bottom:48px}
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--accent);margin-bottom:13px}
+h2{font-size:clamp(36px,5vw,62px);line-height:.98;letter-spacing:-.055em;margin:0 0 18px}
+.lead{font-size:18px;color:var(--muted);max-width:680px}
+.lead + .lead{margin-top:14px}
+.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.module{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;min-height:220px}
+.module-num{font-size:12px;color:#888;font-weight:800;margin-bottom:35px}
+.module h3{font-size:25px;letter-spacing:-.035em;margin:0 0 10px}
+.module p{color:var(--muted);margin:0;font-size:15px}
+.module:hover{border-color:#aaa;transform:translateY(-2px);transition:.2s}
+.curriculum-head{margin:60px 0 6px}
+.curriculum-head h3{font-size:22px;letter-spacing:-.03em;margin:0 0 8px}
+.curriculum-head p{color:var(--muted);margin:0;font-size:15px}
+.curriculum dl{margin:14px 0 0}
+.curriculum dt{font-weight:800;font-size:15px;margin-top:16px}
+.curriculum dt:first-child{margin-top:0}
+.curriculum dd{color:var(--muted);margin:3px 0 0;font-size:15px}
+.curriculum ul{margin:14px 0 0;padding-left:0;list-style:none}
+.curriculum ul li{color:var(--muted);font-size:15px;padding:6px 0;border-bottom:1px solid var(--line)}
+.curriculum ul li:last-child{border:0}
+.curriculum .framework{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.curriculum .framework b{display:block;font-size:15px;margin-bottom:6px}
+.flow{font-weight:800;font-size:14px;letter-spacing:.02em;margin:16px 0;padding:14px 16px;background:var(--soft);border-radius:10px;display:inline-block}
+.not-course{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.note{padding:32px;background:var(--soft);border-radius:18px}
+.note h3{margin:0 0 14px;font-size:22px}
+.note p{margin:0;color:#5d5d58}
+.not-for-list{display:grid;gap:0;margin-top:10px}
+.not-for-item{display:flex;gap:13px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.not-for-item:last-child{border-bottom:1px solid var(--line)}
+.not-for-item .x{flex:none;width:23px;height:23px;display:grid;place-items:center;background:var(--ink);color:#fff;border-radius:50%;font-size:12px;font-weight:900}
+.bonus{background:var(--ink);color:#fff;border-radius:28px;padding:55px;display:grid;grid-template-columns:1fr .85fr;gap:55px}
+.bonus .kicker{color:#ff7558}
+.bonus h2{max-width:700px}
+.bonus p{color:#a9a9a9}
+.bonus-note{font-size:13px;color:#888;margin-top:16px}
+.bonus-list{display:grid;gap:11px}
+.bonus-item{padding:12px 0;border-bottom:1px solid #343434;font-size:14px}
+.bonus-item::before{content:"✓";color:var(--accent);font-weight:900;margin-right:10px}
+.checklist-fields{margin-top:36px;display:grid;gap:14px}
+.checklist-fields .field{font-size:14px;color:#c7c7c7}
+.checklist-fields .field b{color:#fff;font-weight:800}
+.quote{padding:90px 0;text-align:center}
+.quote blockquote{font-size:clamp(31px,4vw,50px);line-height:1.04;letter-spacing:-.045em;max-width:900px;margin:0 auto 22px;font-weight:800}
+.quote p{color:#777}
+.manifesto{background:var(--ink);color:#fff;border-radius:28px;padding:60px}
+.manifesto .kicker{color:#ff7558}
+.manifesto h2{max-width:750px;color:#fff}
+.manifesto p{color:#c2c2c2;max-width:680px;font-size:17px}
+.manifesto .stack{display:flex;flex-wrap:wrap;gap:10px 22px;margin:22px 0}
+.manifesto .stack span{font-size:15px;color:#e7e7e7}
+.manifesto .stack strong{color:var(--accent);font-weight:800}
+.manifesto .asks{display:grid;gap:10px;margin:26px 0;max-width:560px}
+.manifesto .asks div{font-style:normal;font-size:17px;font-weight:700;color:#fff;padding:14px 18px;background:#1c1c1c;border-radius:10px}
+.manifesto .emphasis{color:#fff;font-weight:800;font-size:19px}
+.personas{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.price-box{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:48px;text-align:center;max-width:460px}
+.price-amount{font-size:44px;font-weight:900;letter-spacing:-.03em;min-height:52px}
+.price-original{font-size:22px;font-weight:700;color:var(--muted);text-decoration:line-through;letter-spacing:normal}
+.price-sub{color:var(--muted);font-size:14px;margin:6px 0 28px}
+.price-box .bonus-item{text-align:left;color:var(--ink);border-bottom-color:var(--line)}
+.price-box .bonus-item::before{color:var(--accent-dark)}
+.price-box .btn{width:100%;margin-top:28px}
+.price-note{font-size:13px;color:var(--muted);margin-top:16px}
+.faq{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px}
+details{border-top:1px solid var(--line);padding:21px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:800;font-size:17px}
+details p{color:var(--muted);max-width:700px;margin:12px 0 0}
+.final{padding:100px 0 110px;text-align:center}
+.final h2{max-width:900px;margin:0 auto 20px}
+.final p{color:var(--muted);font-size:18px;margin:0 auto 30px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:12px;display:flex;justify-content:space-between}
+@media(max-width:850px){
+  .navlinks{display:none}
+  .hero,.bonus,.faq,.not-course,.personas{grid-template-columns:1fr}
+  .hero{padding:65px 0 55px;gap:45px}
+  .hero-card{transform:none}
+  .modules{grid-template-columns:1fr}
+  .bonus{padding:35px 25px;gap:35px}
+  .manifesto{padding:35px 25px}
+  h1{font-size:clamp(46px,13vw,70px)}
+  .section{padding:70px 0}
+  footer{gap:15px;flex-direction:column}
+  .price-box{max-width:100%}
+}
+@media(max-width:480px){
+  nav{height:auto;min-height:64px;padding:12px 0;flex-wrap:nowrap}
+  .logo{font-size:14px;white-space:nowrap}
+  .navcta{font-size:12px;padding:9px 13px;white-space:nowrap;flex:none}
+  .hero{padding:40px 0 36px;gap:28px}
+  h1{font-size:clamp(34px,10vw,52px);letter-spacing:-.045em;margin:0 0 18px}
+  .hero-stat{margin:0 0 16px}
+  .hero-copy{margin-bottom:22px}
+  .hero-card{padding:24px}
+  .card-top{margin-bottom:30px}
+  h2{font-size:clamp(28px,8vw,40px)}
+  .section{padding:44px 0}
+  .section-head{margin-bottom:30px}
+  .curriculum-head{margin:36px 0 6px}
+  .bonus{padding:26px 20px;gap:24px;border-radius:20px}
+  .manifesto{padding:26px 20px;border-radius:20px}
+  .quote{padding:50px 0}
+  .quote blockquote{font-size:clamp(24px,7vw,32px)}
+  .price-box{padding:30px 22px}
+  .final{padding:60px 0 65px}
+  .lead{font-size:17px}
+  .final p{font-size:17px}
+  .module p{font-size:14px}
+  .curriculum-head p{font-size:14px}
+  .curriculum dd{font-size:14px}
+  .curriculum ul li{font-size:14px}
+  .note p{font-size:15px}
+  details p{font-size:15px}
+  summary{font-size:16px}
+  .bonus-item{font-size:13px}
+  .price-sub{font-size:13px}
+}.lead-overlay{position:fixed;inset:0;background:rgba(15,15,15,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:999;padding:20px}
+.lead-overlay.open{display:flex}
+.lead-modal{background:#fff;border-radius:22px;padding:32px;max-width:420px;width:100%;position:relative;box-shadow:0 30px 60px rgba(0,0,0,.3)}
+.lead-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;cursor:pointer;color:#999;line-height:1}
+.lead-intro{font-size:16px;line-height:1.5;margin:0 0 20px;color:var(--ink);padding-right:20px}
+.lead-input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;font-size:15px;font-family:inherit;box-sizing:border-box}
+.lead-input.error{border-color:#e5484d;margin-bottom:4px}
+.lead-error{display:none;color:#e5484d;font-size:12px;margin:0 0 10px 4px}
+.lead-error.show{display:block}
+.lead-proceed{width:100%;border:none;cursor:pointer;font-family:inherit}
+@keyframes lead-flash{0%,100%{opacity:1}50%{opacity:.5}}
+.lead-flash{animation:lead-flash 1.1s ease-in-out infinite;width:100%;text-align:center;display:block;margin-bottom:12px;box-sizing:border-box}
+.lead-whatsapp{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border-radius:999px;padding:14px;font-weight:700;text-decoration:none;box-sizing:border-box}
+.lead-whatsapp svg{width:20px;height:20px;flex:none}
+#leadStep2{display:none;flex-direction:column}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#">AI SOFTWARE <span>BUILDER</span></a>
+      <div class="navlinks">
+        <a href="#inside">What's inside</a>
+        <a href="#bonus">Bonus</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="navcta selar-trigger" href="https://selar.com/8713g4z88e">Get the course</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="container hero">
+  <div>
+    <h1>AI HELPED YOU BUILD YOUR APP.<br><em>WHO HELPED YOU SECURE IT?</em></h1>
+    <p class="hero-stat"><strong>In 2025, GitGuardian detected 28.65 million new hardcoded secrets in public GitHub commits — a 34% increase from the year before.</strong></p>
+    <p class="hero-copy">And here's the uncomfortable part. AI has made it easier than ever to build software. You can describe an idea, and AI can write the code, build the interface, connect your database, set up authentication, integrate payments, and help you deploy the whole thing. But there's a difference between getting an application to work and understanding what you've actually built.</p>
+    <p class="hero-copy">Because when AI is doing the building, you still need to know enough to guide it, know what questions to ask, understand the decisions it's making, and recognize when something doesn't look right — and know what should be checked before you put your application in front of real users. That's what The AI Software Builder Course is for.</p>
+    <div class="buttons">
+      <a class="btn primary selar-trigger" href="https://selar.com/8713g4z88e">Get the AI Software Builder Course →</a>
+      <a class="btn secondary" href="#inside">See what's inside</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="card-top"><span>Pre-launch review</span></div>
+    <div class="checklist">
+      <div class="check"><div class="tick">✓</div><div><b>Secrets protected</b><span>Someone can't open your site's code in their browser and steal your API keys.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>User data isolated</b><span>One user can't type in another user's ID and see their private information.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>Permissions enforced</b><span>Hiding a button isn't enough — someone can't bypass it and reach admin features directly.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>Production tested</b><span>Someone actually used the live app and it worked — not just on your own computer.</span></div></div>
+      <div class="check"><div class="tick">✓</div><div><b>Backups verified</b><span>If your database got wiped tomorrow, you could actually get the data back — not just hope the backup file works.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Your app looking fine doesn't make it secure.</h2>
+      <p class="lead">AI has changed who can build software. You no longer have to spend years learning to write every line of code before turning an idea into something real. That's an incredible opportunity — but it also creates a new problem.</p>
+      <p class="lead">Your application might look beautiful, work perfectly in testing, have a database, authentication and payments, and be live on the internet — and you might still have no idea whether you've made a serious mistake somewhere along the way. That's not because you're incapable. It's because AI can generate a lot of complexity very quickly. The answer isn't to stop using AI. The answer is to understand enough to use it properly.</p>
+    </div>
+    <div class="not-course">
+      <div class="note"><h3>AI isn't a magic box.</h3><p>It doesn't automatically know your business, understand your users, know which features matter, or know which technology is appropriate for your project — and it doesn't automatically make every piece of generated code secure.</p></div>
+      <div class="note"><h3>The numbers back this up.</h3><p>Veracode's research found that 45% of AI-generated coding tasks produced code with security vulnerabilities when tested against common security weaknesses. The question isn't "can AI build software?" — it's "do you understand enough to review what AI builds?"</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Is this you?</div>
+      <h2>Who this course is for.</h2>
+    </div>
+    <div class="personas">
+      <div class="note"><h3>The aspiring builder</h3><p>You have ideas for websites, applications or SaaS products. Traditional programming always felt like a massive barrier. AI changed that — now you want to understand how to actually use it.</p></div>
+      <div class="note"><h3>The vibe coder</h3><p>You're already using AI to build with tools like ChatGPT, Claude, Gemini, Cursor or coding agents. Things work, but sometimes you look at what AI produced and think: "I have no idea what any of this means." This course is for you.</p></div>
+      <div class="note"><h3>The designer</h3><p>You understand interfaces, users and experiences. Now you want to understand more of what happens behind the interface.</p></div>
+      <div class="note"><h3>The entrepreneur</h3><p>You have a business idea and want to understand what's actually involved in turning that idea into software.</p></div>
+      <div class="note"><h3>The freelancer</h3><p>You want to use AI to build more efficiently while still understanding enough to communicate with clients and manage projects responsibly.</p></div>
+      <div class="note"><h3>The curious builder</h3><p>You simply want to understand how modern software works and how AI is changing the way it's built. You don't need to become an engineer to do that.</p></div>
+    </div>
+
+    <div class="curriculum-head">
+      <h3>Who this course is not for</h3>
+    </div>
+    <div class="not-for-list">
+      <div class="not-for-item"><div class="x">✕</div>This isn't designed to replace a computer science degree.</div>
+      <div class="not-for-item"><div class="x">✕</div>It isn't an advanced programming course.</div>
+      <div class="not-for-item"><div class="x">✕</div>It isn't a collection of hundreds of prompts promising that one magical prompt will build your entire business.</div>
+      <div class="not-for-item"><div class="x">✕</div>And it isn't a promise that AI will never make mistakes. Because it will. The point is to help you become better at working with those mistakes.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">What this is — and isn't</div>
+      <h2>Not another "learn to code" course.</h2>
+    </div>
+    <div class="not-course">
+      <div class="note"><h3>It isn't about memorising syntax.</h3><p>You don't need to become a software engineer to understand what your AI coding assistant is doing. The goal is practical understanding and better decisions.</p></div>
+      <div class="note"><h3>It isn't AI autopilot.</h3><p>AI can move incredibly fast. That makes your ability to plan, review, question and verify what it creates even more important.</p></div>
+      <div class="note"><h3>It isn't a giant prompt dump.</h3><p>The course gives you useful AI prompts where they matter, but the real value is knowing what to ask, why you're asking it and how to judge the answer.</p></div>
+      <div class="note"><h3>It teaches you your limits, too.</h3><p>Some projects need experienced developers. Knowing when a problem is beyond your current ability is part of becoming a responsible builder.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="inside">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">The course</div>
+      <h2>AI can write the code. You still need to understand the product.</h2>
+      <p class="lead">The AI Software Builder Course teaches the practical software knowledge you need to build with AI without blindly trusting what AI builds for you. Not a traditional programming course — you won't memorize syntax or train to become a professional software engineer. Instead, you'll learn how modern software works, how to communicate with AI effectively, how to review what it produces, and when to bring in experienced help.</p>
+      <p class="lead">Six modules. One practical journey. And a bonus security and deployment checklist to help you review what you've built. Let's break it down.</p>
+    </div>
+    <div class="modules">
+      <article class="module"><div class="module-num">MODULE 01</div><h3>Understanding the Modern AI Development Stack</h3><p>Understand how websites and web applications actually work — frontend, backend, APIs, databases, authentication, deployment, domains and more.</p></article>
+      <article class="module"><div class="module-num">MODULE 02</div><h3>AI Vibe Coding: Thinking Before You Build</h3><p>Learn how to turn an idea into a sensible plan, work with AI as a partner, review its output, debug problems and break projects into manageable tasks.</p></article>
+      <article class="module"><div class="module-num">MODULE 03</div><h3>Choosing the Right Technologies</h3><p>Understand what technologies like React, Next.js, Supabase, PostgreSQL, GitHub, Vercel, Render and AI models are for — and how to make better choices.</p></article>
+      <article class="module"><div class="module-num">MODULE 04</div><h3>Building Real Projects with AI</h3><p>Apply the ideas to real projects: landing pages, business websites, portfolios, SaaS products, AI apps, ecommerce, internal tools and mobile apps.</p></article>
+      <article class="module"><div class="module-num">MODULE 05</div><h3>Security, Deployment & Professional Best Practices</h3><p>Understand the fundamentals of protecting secrets, authentication, permissions, validation, testing, deployment, environments and maintenance.</p></article>
+      <article class="module"><div class="module-num">MODULE 06</div><h3>Career and Business</h3><p>Turn your skills into something useful: build a portfolio, work with clients, price projects, write proposals and grow from solo AI builder to software business.</p></article>
+    </div>
+
+    <div class="curriculum-head">
+      <h3>The full curriculum</h3>
+      <p>Every module, broken down. Tap to expand.</p>
+    </div>
+    <div class="curriculum">
+      <details>
+        <summary>Module 01 — Understanding the modern AI development stack</summary>
+        <p>Before you can confidently build software with AI, you need to understand what software actually is — not in a complicated computer-science way, but in a practical "I need to understand what I'm looking at" way.</p>
+        <dl>
+          <dt>What software actually is</dt>
+          <dd>The difference between software and hardware, why software exists, and the different types of software you interact with every day.</dd>
+          <dt>Websites and web applications</dt>
+          <dd>What makes a website different from an application and why the distinction matters when you're building.</dd>
+          <dt>How a web application actually works</dt>
+          <dd>The major pieces that make an application function and how they communicate with one another.</dd>
+          <dt>Frontend vs Backend</dt>
+          <dd>What users see versus what happens behind the scenes.</dd>
+          <dt>Client vs Server</dt>
+          <dd>Where requests come from, where they go, and why the distinction matters.</dd>
+          <dt>APIs</dt>
+          <dd>What an API actually does and why modern applications depend on them.</dd>
+          <dt>Databases</dt>
+          <dd>Where application data lives and how applications interact with stored information.</dd>
+          <dt>Authentication vs Authorization</dt>
+          <dd>The difference between proving who someone is and deciding what they're allowed to do.</dd>
+          <dt>Deployment</dt>
+          <dd>What changes when your application moves from your computer to the real internet.</dd>
+          <dt>Localhost, hosting and live environments</dt>
+          <dd>Understanding what you're actually working with when you see a project running locally versus online.</dd>
+          <dt>Domains, DNS and HTTPS</dt>
+          <dd>What happens when someone types your website address into their browser.</dd>
+          <dt>The complete request journey</dt>
+          <dd>You'll follow what happens from the moment a user interacts with your application through the different systems involved until the response comes back.</dd>
+        </dl>
+        <p>By the end of this module, terms like API, backend, database, server, authentication, DNS and deployment won't feel like mysterious developer language anymore.</p>
+      </details>
+
+      <details>
+        <summary>Module 02 — AI vibe coding: thinking before you build</summary>
+        <p>One of the biggest mistakes you can make with AI is simple: starting to code before you've figured out what you're building. You'll learn how to think through a project before asking AI to build it — how to:</p>
+        <ul>
+          <li>Start with the problem instead of the technology</li>
+          <li>Understand who you're building for</li>
+          <li>Use the 5 Whys</li>
+          <li>Define an MVP</li>
+          <li>Map a user flow</li>
+          <li>Plan your features</li>
+          <li>Think about application architecture</li>
+          <li>Talk to AI before asking it to code</li>
+          <li>Let AI ask you questions</li>
+          <li>Review AI-generated code and decisions</li>
+          <li>Debug with AI</li>
+          <li>Understand AI chatbots vs coding agents</li>
+          <li>Break large projects into smaller tasks</li>
+          <li>Set up and organize a project properly</li>
+          <li>Use documentation and version control</li>
+        </ul>
+        <p>AI is not a mind reader. If you give it vague instructions, it has to make assumptions. If you give it clear requirements, context and constraints, you give it a much better chance of building what you actually want. The better you can communicate with AI, the better you can build with it.</p>
+      </details>
+
+      <details>
+        <summary>Module 03 — Choosing the right technologies</summary>
+        <p>This module isn't about teaching you how to code these technologies — it's about helping you understand them. You'll learn what different technologies are for, why they exist, what problems they solve, and when they might make sense.</p>
+        <dl>
+          <dt>HTML, CSS &amp; JavaScript</dt>
+          <dd>What each one does and how they work together to form the foundation of the web.</dd>
+          <dt>Plain HTML vs Web Applications</dt>
+          <dd>When a simple static website is enough and when your project needs something more.</dd>
+          <dt>React</dt>
+          <dd>Why reusable components exist and what React brings to application development.</dd>
+          <dt>Next.js</dt>
+          <dd>What it is, why it's used, how routing works, and why things like SEO and application structure matter.</dd>
+          <dt>React vs Next.js</dt>
+          <dd>Understanding the difference so you can make a more informed decision when AI recommends one.</dd>
+          <dt>React Native vs Flutter</dt>
+          <dd>Understanding the different approaches to building mobile applications.</dd>
+          <dt>Tailwind vs traditional CSS</dt>
+          <dd>Different approaches to styling and when each can make sense.</dd>
+          <dt>Backend technologies</dt>
+          <dd>Understanding what the backend does and where technologies such as Node.js, Express, NestJS and other approaches fit.</dd>
+          <dt>SQL vs NoSQL</dt>
+          <dd>Different approaches to storing data and the situations where they can make sense.</dd>
+          <dt>PostgreSQL, MongoDB &amp; Supabase</dt>
+          <dd>Understanding what they are, how they differ, and where services such as Supabase fit into modern application development.</dd>
+          <dt>Supabase vs Firebase</dt>
+          <dd>Understanding backend-as-a-service platforms and the differences between two popular options.</dd>
+          <dt>Git &amp; GitHub</dt>
+          <dd>Why version control matters and why your project's history can become extremely important.</dd>
+          <dt>Render, Vercel &amp; Netlify</dt>
+          <dd>Understanding different hosting and deployment options instead of simply choosing whichever one AI suggests.</dd>
+          <dt>Domains, DNS, SSL &amp; Cloudflare</dt>
+          <dd>Understanding the infrastructure behind getting an application onto the internet.</dd>
+          <dt>Stripe, Paystack &amp; Flutterwave</dt>
+          <dd>Understanding how payment providers fit into applications and when they become relevant.</dd>
+          <dt>AI models</dt>
+          <dd>Understanding the differences between tools and models such as ChatGPT, Claude, Gemini, Grok, DeepSeek and others.</dd>
+          <dt>AI coding agents</dt>
+          <dd>Understanding what coding agents are, how they differ from normal AI chat, and what changes when AI can work directly inside your project.</dd>
+        </dl>
+        <div class="framework">
+          <b>The Technology Decision Framework</b>
+          <p>Instead of memorizing which technology is supposedly "the best," you'll learn to think through questions like: What am I building? What problem does this technology solve? Do I actually need it? What are the trade-offs? What will this decision make easier? What might it make harder? What happens if the project grows? That's the real skill — not memorizing technologies. Knowing how to choose.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Module 04 — Building real projects with AI</summary>
+        <p>Now it's time to take those ideas and put them into real project scenarios. You'll explore the thinking and workflow behind:</p>
+        <ul>
+          <li>Landing pages</li>
+          <li>Business websites</li>
+          <li>Portfolios</li>
+          <li>SaaS MVPs</li>
+          <li>AI-powered applications</li>
+          <li>Ecommerce applications</li>
+          <li>Internal business tools</li>
+          <li>Mobile applications</li>
+        </ul>
+        <p>Then you'll bring everything together in the capstone: a complete application from idea to deployment. You'll learn the process of moving from:</p>
+        <div class="flow">IDEA → PLAN → ARCHITECTURE → AI BUILDING → TESTING → DEPLOYMENT</div>
+        <p>Instead of throwing an entire project at AI and hoping for the best, you'll learn how to break it into manageable pieces. Build one part. Review it. Test it. Fix what needs fixing. Then move forward. That's how you stay in control while AI does the heavy lifting.</p>
+      </details>
+
+      <details>
+        <summary>Module 05 — Security, deployment &amp; professional best practices</summary>
+        <p>Getting an application to work is one thing. Getting it ready for real users is another. You'll learn about:</p>
+        <ul>
+          <li>Environment variables</li>
+          <li>.gitignore</li>
+          <li>API keys and secret credentials</li>
+          <li>Keeping sensitive information out of frontend code</li>
+          <li>Authentication</li>
+          <li>Authorization</li>
+          <li>User roles and permissions</li>
+          <li>Testing</li>
+          <li>Development vs production</li>
+          <li>Deployment</li>
+          <li>Production environment variables</li>
+          <li>Application maintenance</li>
+          <li>Updates and release notes</li>
+          <li>Professional development workflows</li>
+        </ul>
+        <p>You'll also learn how to work with AI when something goes wrong after deployment. Because "it worked on my computer" isn't the end of the process — a real application has to survive the real world.</p>
+      </details>
+
+      <details>
+        <summary>Module 06 — Career &amp; business</summary>
+        <p>Building software with AI doesn't have to stop at personal projects. This module takes you into the opportunities that can come from knowing how to build with AI. You'll learn about:</p>
+        <ul>
+          <li>Building a portfolio</li>
+          <li>Finding clients</li>
+          <li>Understanding what clients actually pay for</li>
+          <li>Pricing projects</li>
+          <li>Creating proposals</li>
+          <li>Communicating with clients</li>
+          <li>Managing AI-assisted projects professionally</li>
+          <li>Turning solo AI building into a software business</li>
+          <li>Continuing to learn as AI and technology evolve</li>
+        </ul>
+        <p>Because the tools will change. The models will change. The frameworks will change. The platforms will change. But the ability to understand problems, evaluate technology, guide AI and make good decisions will continue to matter.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bonus">
+  <div class="container">
+    <div class="bonus">
+      <div>
+        <div class="kicker">Included bonus</div>
+        <h2>THE VIBE CODER SECURITY &amp; DEPLOYMENT CHECKLIST</h2>
+        <p>A practical pre-launch and post-deployment review guide designed around the kinds of things AI-assisted projects can easily overlook. It doesn't just tell you what to check — it tells you how to check it.</p>
+        <div class="checklist-fields">
+          <div class="field"><b>What it means</b> — a simple explanation without unnecessary technical jargon.</div>
+          <div class="field"><b>Why it matters</b> — what could go wrong if it's ignored.</div>
+          <div class="field"><b>Does your app need this?</b> — not every application needs every measure.</div>
+          <div class="field"><b>AI prompt</b> — a ready-to-use prompt for your AI coding assistant.</div>
+          <div class="field"><b>What to do next</b> — clear guidance either way.</div>
+        </div>
+        <p class="bonus-note">Build it. Check it. Then ship it. Included as a bonus with the course.</p>
+        <a class="btn primary selar-trigger" href="https://selar.com/8713g4z88e">Get the course + checklist →</a>
+      </div>
+      <div class="bonus-list">
+        <div class="bonus-item">Are your API keys and secrets actually protected?</div>
+        <div class="bonus-item">Can one user accidentally access another user's data?</div>
+        <div class="bonus-item">Are permissions enforced on the server — or are you only hiding buttons?</div>
+        <div class="bonus-item">Are your admin pages properly protected?</div>
+        <div class="bonus-item">Is user input being validated on the server?</div>
+        <div class="bonus-item">Are your database queries protected against SQL injection?</div>
+        <div class="bonus-item">Could someone repeatedly abuse an expensive feature?</div>
+        <div class="bonus-item">Are all the packages and dependencies in your project legitimate?</div>
+        <div class="bonus-item">Did you ever expose a secret in your Git history?</div>
+        <div class="bonus-item">Are your error messages revealing information they shouldn't?</div>
+        <div class="bonus-item">Are your authentication cookies properly protected?</div>
+        <div class="bonus-item">Do your dependencies contain known vulnerabilities?</div>
+        <div class="bonus-item">Did you actually test the application after deploying it?</div>
+        <div class="bonus-item">Are your development and production environments separated?</div>
+        <div class="bonus-item">Are your important data and files backed up?</div>
+        <div class="bonus-item">And more.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="container">
+    <blockquote>"The goal isn't simply: AI says my app is ready."</blockquote>
+    <p>The goal is: "I've checked the things that matter for my application, and I understand what I've verified." Think of the checklist as your pre-launch second pair of eyes.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container faq">
+    <div>
+      <div class="kicker">Questions</div>
+      <h2>Before you build.</h2>
+      <p class="lead">A few things worth knowing before you start.</p>
+    </div>
+    <div>
+      <details open><summary>Do I need programming experience?</summary><p>No. The course is designed to start from the foundations. You don't need to already understand APIs, databases, frameworks or deployment. If you've already been vibe coding, that's useful too — you'll connect what you've experienced to the concepts behind it.</p></details>
+      <details><summary>Will this turn me into a software engineer?</summary><p>No, and that's intentional. The purpose is to give you enough understanding to build responsibly with AI, make better decisions, review what AI produces, and recognize when you need experienced help.</p></details>
+      <details><summary>Is this just a collection of AI prompts?</summary><p>No. Prompts are included throughout, but understanding what you're asking AI to do is what gives you control — you'll learn the concepts behind the prompts, not just copy instructions you don't understand.</p></details>
+      <details><summary>Can I use ChatGPT?</summary><p>Yes. The concepts aren't tied to one AI platform — you can apply what you learn with ChatGPT, Claude, Gemini, coding agents and other tools. The fundamentals won't disappear just because the model changes.</p></details>
+      <details><summary>Can I build with my phone?</summary><p>For some projects and workflows, yes. Your exact experience depends on the tools and type of application you're building — AI-assisted software building is increasingly accessible across devices and setups.</p></details>
+      <details><summary>Do I need an expensive computer?</summary><p>Not necessarily. Your requirements depend heavily on what you're building and which tools you're using. The course focuses on understanding the process rather than requiring an expensive setup.</p></details>
+      <details><summary>Can I build a SaaS with AI?</summary><p>Yes — AI can help you build significant parts of a SaaS application. But "AI can build it" doesn't mean "AI can responsibly make every decision for you." You'll still need to think about users, architecture, databases, authentication, payments, security, testing and deployment.</p></details>
+      <details><summary>Can AI really build an entire application?</summary><p>AI can generate substantial parts of an application and, with modern coding agents, work across multiple parts of a project. But complex applications still require planning, review, testing, debugging and human judgment.</p></details>
+      <details><summary>Will this course teach me security?</summary><p>Yes — at a practical level appropriate for an AI software builder. Module 5 covers the fundamentals, and the Vibe Coder Security &amp; Deployment Checklist gives you a practical review process. The goal isn't to make you a cybersecurity specialist — it's to help you stop treating security as something AI automatically handles for you.</p></details>
+      <details><summary>What if I build something beyond my ability?</summary><p>That's okay — recognizing that is part of becoming a responsible builder. The course helps you understand your limits and recognize when getting experienced help is the smarter decision. Knowing when to ask for help is not failure. It's good judgment.</p></details>
+      <details><summary>Is this only for freelancers?</summary><p>No. You can use these skills for personal projects, startups, businesses, freelance work, internal tools, prototypes, SaaS products and much more. The underlying skill is the same.</p></details>
+      <details><summary>How long will it take?</summary><p>There isn't one correct speed. You can move quickly if you already understand some concepts, or slow down, complete the exercises, and use the prompts. The goal isn't simply to finish the course — the goal is to understand it.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="buy">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Enroll</div>
+      <h2>Get the course</h2>
+      <p class="lead">One-time payment. Lifetime access.</p>
+    </div>
+    <div class="price-box">
+      <div class="price-amount"><span class="price-original" id="price-original">$25</span> <span id="price-amount">$10</span></div>
+      <p class="price-sub">One-time payment · Lifetime access</p>
+      <div class="bonus-list">
+        <div class="bonus-item">The AI Software Builder Course — 6 modules</div>
+        <div class="bonus-item">Full security &amp; deployment module</div>
+        <div class="bonus-item">Bonus: Vibe Coder Security &amp; Deployment Checklist</div>
+      </div>
+      <a class="btn primary selar-trigger" href="https://selar.com/8713g4z88e">Get The Course →</a>
+      <p class="price-note">You'll create your account using the same email you pay with.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="container">
+    <div class="kicker">Start building differently</div>
+    <h2>BUILD WITH AI.<br>UNDERSTAND WHAT YOU BUILD.</h2>
+    <p>You don't have to become a software engineer to build software with AI. But you do need to understand what you're building.</p>
+    <a class="btn primary selar-trigger" href="https://selar.com/8713g4z88e">GET THE AI SOFTWARE BUILDER COURSE →</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:center;width:100%">
+    <span>© 2026 Learn From Ola</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prices = { NG: '₦10,000', GH: 'GH₵85', KE: 'KSh 1,000' };
+  var originalPrices = { NG: '₦25,000', GH: 'GH₵215', KE: 'KSh 2,500' };
+  var el = document.getElementById('price-amount');
+  var origEl = document.getElementById('price-original');
+  if(!el) return;
+  fetch('https://ipwho.is/')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data && data.success && data.country_code && prices[data.country_code]){
+        el.textContent = prices[data.country_code];
+        if(origEl) origEl.textContent = originalPrices[data.country_code];
+      } else {
+        el.textContent = '$10';
+        if(origEl) origEl.textContent = '$25';
+      }
+    })
+    .catch(function(){ el.textContent = '$10'; if(origEl) origEl.textContent = '$25'; });
+})();
+</script>
+<div class="lead-overlay" id="leadPopupOverlay">
+  <div class="lead-modal">
+    <button class="lead-close" onclick="closeLeadPopup()" aria-label="Close">✕</button>
+    <div id="leadStep1">
+      <p class="lead-intro">It's great to see you're interested in the AI Software Developer course. Kindly enter your details</p>
+      <input type="text" id="leadFirstName" class="lead-input" placeholder="First name">
+      <span class="lead-error" id="leadFirstNameError"></span>
+      <input type="email" id="leadEmail" class="lead-input" placeholder="Email">
+      <span class="lead-error" id="leadEmailError"></span>
+      <button class="btn primary lead-proceed" onclick="submitLead()">Proceed</button>
+    </div>
+    <div id="leadStep2">
+      <a id="leadGetCourseBtn" class="btn primary lead-flash" href="https://selar.com/8713g4z88e" target="_blank" rel="noopener">Get course now →</a>
+      <a id="leadWhatsappBtn" class="lead-whatsapp" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.26.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24m-4.53 4.7c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.72 4.2 3.7.59.24 1.05.38 1.4.48.59.19 1.13.16 1.55.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.46-.28-.24-.12-1.46-.72-1.68-.8-.23-.09-.39-.13-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.24-.12-1.02-.38-1.95-1.2-.72-.65-1.2-1.44-1.35-1.68-.14-.24-.02-.37.1-.5.11-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.56-1.36-.78-1.86-.2-.48-.4-.42-.56-.42h-.4z"/></svg>
+        <span id="leadWhatsappLabel">Reach on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var SELAR_URL = 'https://selar.com/8713g4z88e';
+  var LEAD_ENDPOINT = 'https://learnfromola-aisoftware-landing-pag.vercel.app/api/send-lead';
+  var WHATSAPP_NUMBER = '2349036374359';
+
+  window.openLeadPopup = function(e){
+    if(e) e.preventDefault();
+    document.getElementById('leadStep1').style.display = 'block';
+    document.getElementById('leadStep2').style.display = 'none';
+    document.getElementById('leadFirstName').value = '';
+    document.getElementById('leadEmail').value = '';
+    clearLeadErrors();
+    document.getElementById('leadPopupOverlay').classList.add('open');
+  };
+
+  window.closeLeadPopup = function(){
+    document.getElementById('leadPopupOverlay').classList.remove('open');
+  };
+
+  function clearLeadErrors(){
+    ['leadFirstName','leadEmail'].forEach(function(id){
+      document.getElementById(id).classList.remove('error');
+      var errEl = document.getElementById(id + 'Error');
+      errEl.textContent = '';
+      errEl.classList.remove('show');
+    });
+  }
+
+  function setLeadError(id, message){
+    document.getElementById(id).classList.add('error');
+    var errEl = document.getElementById(id + 'Error');
+    errEl.textContent = message;
+    errEl.classList.add('show');
+  }
+
+  window.submitLead = function(){
+    var firstNameEl = document.getElementById('leadFirstName');
+    var emailEl = document.getElementById('leadEmail');
+    var firstName = firstNameEl.value.trim();
+    var email = emailEl.value.trim();
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    clearLeadErrors();
+    var hasError = false;
+
+    if(!firstName){
+      setLeadError('leadFirstName', 'Please enter your first name');
+      hasError = true;
+    }
+    if(!email){
+      setLeadError('leadEmail', 'Please enter your email');
+      hasError = true;
+    } else if(!emailPattern.test(email)){
+      setLeadError('leadEmail', 'Please enter a valid email');
+      hasError = true;
+    }
+
+    if(hasError) return;
+
+    fetch(LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName: firstName, email: email })
+    }).then(function(r){
+      return r.json().then(function(data){ console.log('Lead endpoint response:', r.status, data); });
+    }).catch(function(err){
+      console.error('Lead endpoint request failed:', err);
+    });
+
+    var waMessage = "Hi Ola, I'm interested in your AI software developer course. My name is " + firstName + ".\n\nI have few questions. ";
+    document.getElementById('leadWhatsappBtn').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waMessage);
+    document.getElementById('leadGetCourseBtn').href = SELAR_URL;
+
+    document.getElementById('leadStep1').style.display = 'none';
+    document.getElementById('leadStep2').style.display = 'flex';
+  };
+
+  document.querySelectorAll('.selar-trigger').forEach(function(btn){
+    btn.addEventListener('click', window.openLeadPopup);
+  });
+
+  document.getElementById('leadPopupOverlay').addEventListener('click', function(e){
+    if(e.target === this) window.closeLeadPopup();
+  });
+})();
+</script>
+</body>
+</html>
