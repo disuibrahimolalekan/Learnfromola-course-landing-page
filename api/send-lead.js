@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Hi ${firstName},</p>
       <p style="font-size:16px;line-height:1.6;margin:0 0 16px">Thanks for your interest in the AI Software Developer course.</p>
       <p style="font-size:16px;line-height:1.6;margin:0 0 16px">AI can write the code for you now. What most builders don't know is what to check before that code goes live — what to test, what to secure, what to ask. That's what this course teaches.</p>
-      <p style="font-size:16px;line-height:1.6;margin:0 0 24px">You can go ahead and get the course now, or message us directly on WhatsApp if you have questions first.</p>
+      <p style="font-size:16px;line-height:1.6;margin:0 0 24px">You can go ahead and get instant access below, or message us directly on WhatsApp if you have questions first.</p>
       <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:12px">
         <tr><td style="border-radius:999px;background:#111">
           <a href="${SELAR_URL}" style="display:block;padding:14px 20px;color:#fff;text-decoration:none;font-weight:bold;font-size:15px;text-align:center;border-radius:999px">Get the course now →</a>
@@ -64,7 +64,7 @@ export default async function handler(req, res) {
 
   // Attempt 2: log the lead to the Google Sheet — runs regardless of email outcome
   try {
-    const sheetRes = await fetch('https://script.google.com/macros/s/AKfycbz4wgzcjv1szlSZnvcWSaLWZjaBnRoqsCpSYX2PQUA9wPAGpEdesQfcBJRbIIGfanza/exec', {
+    const sheetRes = await fetch('https://script.google.com/macros/s/AKfycbyggGw2rUZiZ6aqBrivWMmiJmB6LpmXFJHk1cCaDfM-cg0sb0jJVpbHafcXV4DqKxsK/exec', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstName, email })
@@ -82,4 +82,4 @@ export default async function handler(req, res) {
   // Report exactly what happened — no more silent failure
   const overallOk = result.emailSent || result.sheetSaved;
   return res.status(overallOk ? 200 : 502).json(result);
-        }
+}
